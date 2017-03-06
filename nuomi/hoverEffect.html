@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hover</title>
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hover {
+        position: relative;
+        width: 450px;
+        height: 250px;
+        cursor: pointer;
+    }
+    
+    img {
+        position: relative;
+        transition: .3s;
+        cursor: pointer;
+    }
+    
+    .hover:hover > img {
+        filter: blur(6px);
+    }
+    
+    .hover:hover > .dialog {
+        visibility: visible;
+    }
+    
+    .hover:hover > .dialog::before,
+    .hover:hover > .dialog::after {
+        transform: scaleX(1);
+    }
+    
+    .hover:hover .cover::before,
+    .hover:hover .cover::after {
+        transform: scaleY(1);
+    }
+    
+    .dialog {
+        top: 45px;
+        left: 75px;
+        position: absolute;
+        width: 300px;
+        height: 160px;
+        visibility: hidden;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 39px 0;
+    }
+    
+    .dialog::before,
+    .dialog::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        transform: scaleX(0);
+        background: #fff;
+        transition: transform .4s ease-in-out;
+        transition-delay: .1s;
+        will-change: transform;
+    }
+    
+    .dialog::before {
+        top: 0;
+    }
+    
+    .dialog::after {
+        bottom: 0;
+    }
+    
+    .dialog:hover {
+        visibility: visible;
+    }
+    
+    .dialog > span {
+        display: block;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    
+    .hover:hover span.sign-up {
+        animation: 2.4s 0.8s blink-2 2, 0.8s blink-1 1;
+    }
+    
+    .dialog > .cover {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    .cover::before,
+    .cover::after {
+        content: '';
+    	position: absolute;
+        width: 2px;
+        height: 100%;
+        top: 0;
+        transform: scaleY(0);
+        background-color: #fff;
+        transition: transform .4s ease-in-out;
+        transition-delay: .1s;
+        will-change: transform;
+    }
+    
+    .cover::before {
+        left: 0;
+    }
+    
+    .cover::after {
+        right: 0;
+    }
+    
+    span.welcome {
+        background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation: masked-animation 4s infinite linear;
+    }
+    
+    @-webkit-keyframes masked-animation {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -100% 0;
+        }
+    }
+    
+    span.sign-up {
+        color: green;
+        font-size: 16px;
+    }
+    
+    @keyframes blink-1 {
+        50% {
+            color: blue;
+        }
+    }
+    
+    @keyframes blink-2 {
+        50% {
+            color: blue;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="hover">
+        <img src="images/bear.jpg" alt="">
+        <div class="dialog">
+            <div class="cover"></div>
+            <span class="welcome">欢迎来到百度前端技术学院</span>
+            <span class="sign-up">点击报名</span>
+        </div>
+    </div>
+</body>
+
+</html>
