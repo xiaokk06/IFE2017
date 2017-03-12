@@ -63,7 +63,7 @@
     var menu = document.querySelector('.menu');
 
     function showMenu(event) {
-        // event.preventDefault();
+        event.preventDefault();
         var x = event.pageX - clickArea.offsetLeft;
         var y = event.pageY - clickArea.offsetTop;
         var insideX = (x > 0 && x < 320);
